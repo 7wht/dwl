@@ -7,11 +7,11 @@
 static const int sloppyfocus               = 1;  /* focus follows mouse */
 static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
 static const unsigned int borderpx         = 0;  /* border pixel of windows */
-static const unsigned int systrayspacing   = 2; /* systray spacing */
+static const unsigned int systrayspacing   = 10; /* systray spacing */
 static const int showsystray               = 1; /* 0 means no systray */
 static const int showbar                   = 1; /* 0 means no bar */
 static const int topbar                    = 1; /* 0 means bottom bar */
-static const char *fonts[]                 = {"JetBrainsMonoNL Nerd Font:size=17"};
+static const char *fonts[]                 = {"JetBrainsMonoNL Nerd Font:size=15"};
 static const float rootcolor[]             = COLOR(0x000000ff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
@@ -127,6 +127,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 static const char *termcmd[] = { "kitty", NULL };
 static const char *menucmd[] = {
     "bemenu-run",
+    "-i",
     "--fn", "JetBrainsMonoNL Nerd Font 20",
     "-p", "run:",
     "-l", "10",
@@ -140,7 +141,7 @@ static const char *menucmd[] = {
     "--single-instance",
     "--tb", "#202328", "--tf", "#FFFFFF",
     "--fb", "#2A2F36", "--ff", "#D9DEE7",
-    "--cb", "#3DAEE9", "--cf", "#202328",
+    "--cb", "#3DAEE9", "--cf", "#FFFFFF",
     "--nb", "#14161A", "--nf", "#D9DEE7",
     "--hb", "#3DAEE9", "--hf", "#14161A",
     "--fbb", "#2B333D", "--fbf", "#D9DEE7",
@@ -149,7 +150,38 @@ static const char *menucmd[] = {
     "--scb", "#2A2F36", "--scf", "#D9DEE7",
     NULL
 };
-static const char *dmenucmd[] = { "bemenu", NULL };
+static const char *dmenucmd[] = { 
+    "bemenu",
+    "-i",
+    "--fn", "JetBrainsMonoNL Nerd Font 20",
+    "-p", "action:",
+    "-l", "10",
+    "--cw", "1",
+    "--ch", "30",
+    "--binding", "vim",
+    "-C",
+    "--fixed-height",
+    "-W", "0.6",
+    "-c",
+    "--single-instance",
+    "--tb", "#202328", "--tf", "#FFFFFF",
+    "--fb", "#2A2F36", "--ff", "#D9DEE7",
+    "--cb", "#3DAEE9", "--cf", "#FFFFFF",
+    "--nb", "#14161A", "--nf", "#D9DEE7",
+    "--hb", "#3DAEE9", "--hf", "#14161A",
+    "--fbb", "#2B333D", "--fbf", "#D9DEE7",
+    "--sb", "#3DAEE9", "--sf", "#14161A",
+    "--ab", "#1D1F22", "--af", "#D9DEE7",
+    "--scb", "#2A2F36", "--scf", "#D9DEE7",
+    NULL
+};
+
+static const char *ss[] = {
+    "bash",
+    "-c",
+    "grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +\%s).png",
+    NULL
+};
 
 
 static const Key keys[] = {
@@ -157,6 +189,7 @@ static const Key keys[] = {
 	/* modifier                  key                  function          argument */
 	{ MODKEY,                    XKB_KEY_space,       spawn,            {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,      spawn,            {.v = termcmd} },
+	{ MODKEY,                    XKB_KEY_c,           spawn,            {.v = ss} },
 	{ MODKEY,                    XKB_KEY_s,           togglebar,        {0} },
 	{ MODKEY,                    XKB_KEY_j,           focusstack,       {.i = +1} },
 	{ MODKEY,                    XKB_KEY_k,           focusstack,       {.i = -1} },
