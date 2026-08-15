@@ -18,12 +18,13 @@ static const char *fonts[]                 = {"JetBrainsMonoNL Nerd Font:size=15
 static const float rootcolor[]             = COLOR(0x000000ff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
-static uint32_t colors[][3]                = {
+static uint32_t colors[][3] = {
 	/*               fg          bg          border    */
-	[SchemeNorm] = { 0xe9eef3ff, 0x31363bff, 0x444444ff },
-	[SchemeSel]  = { 0xe9eef3ff, 0x21262bff, 0x005577ff },
-	[SchemeUrg]  = { 0,          0,          0x770000ff },
+	[SchemeNorm]  = { 0xe9eef3ff, 0x111418ff, 0x005577ff },
+  [SchemeSel] = { 0xe9eef3ff, 0x1a1f23ff, 0x2a2f34ff },
+	[SchemeUrg]  = { 0x000000ff, 0x000000ff, 0x770000ff },
 };
+
 
 /* tagging */
 static char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
