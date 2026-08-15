@@ -1649,6 +1649,10 @@ drawbar(Monitor *m)
 	x = 0;
 	c = focustop(m);
 	for (i = 0; i < LENGTH(tags); i++) {
+    if (i >= 4){
+      if (!(m->tagset[m->seltags] & 1 << i))
+        if (!(occ & 1 << i)) continue;
+    }
 		w = TEXTW(m, tags[i]);
 		drwl_setscheme(m->drw, colors[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drwl_text(m->drw, x, 0, w, m->b.height, m->lrpad / 2, tags[i], urg & 1 << i);
