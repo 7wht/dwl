@@ -195,6 +195,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_c,           spawn,            {.v = ss} },
 	{ MODKEY,                    XKB_KEY_s,           togglebar,        {0} },
 	{ MODKEY,                    XKB_KEY_a,           togglegaps,       {0} },
+	{ MODKEY,                    XKB_KEY_r,           togglesticky,     {0} },
 	{ MODKEY,                    XKB_KEY_j,           focusstack,       {.i = +1} },
 	{ MODKEY,                    XKB_KEY_k,           focusstack,       {.i = -1} },
 	{ MODKEY,                    XKB_KEY_h,           setmfact,         {.f = -0.05f} },
