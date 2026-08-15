@@ -20,8 +20,8 @@ static const float rootcolor[]             = COLOR(0x000000ff);
 static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
 static uint32_t colors[][3] = {
 	/*               fg          bg          border    */
-	[SchemeNorm]  = { 0xe9eef3ff, 0x111418ff, 0x005577ff },
-  [SchemeSel] = { 0xe9eef3ff, 0x1a1f23ff, 0x2a2f34ff },
+  [SchemeNorm] = { 0xe9eef3ff, 0x1a1f23ff, 0x2a2f34ff },
+  [SchemeSel]  = { 0xe9eef3ff, 0x111418ff, 0x005577ff },
 	[SchemeUrg]  = { 0x000000ff, 0x000000ff, 0x770000ff },
 };
 
@@ -214,7 +214,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_f,           togglefloating,   {0} },
 	{ MODKEY,                    XKB_KEY_w,           togglefullscreen, {0} },
 	{ MODKEY,                    XKB_KEY_0,           view,             {.ui = ~0} },
-  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_m,           quit,             {0} },
+  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_b,           quit,             {0} },
 
 	TAGKEYS(          XKB_KEY_1, XKB_KEY_exclam,                        0),
 	TAGKEYS(          XKB_KEY_2, XKB_KEY_at,                            1),
