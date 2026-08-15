@@ -1762,6 +1762,7 @@ int
 drawstatus(Monitor *m)
 {
 	int x, tw, iw;
+  int traywidth = tray_get_width(m->tray);
 	char rstext[512] = "";
 	char *p, *argstart, *argend, *itext;
 	uint32_t scheme[3], *color;
@@ -1786,7 +1787,7 @@ drawstatus(Monitor *m)
 	}
 	tw = TEXTW(m, rstext) - m->lrpad;
 
-	x = m->b.width - tw;
+	x = m->b.width - tw - traywidth;
 	itext = stext;
 	scheme[0] = colors[SchemeNorm][0];
 	scheme[1] = colors[SchemeNorm][1];
