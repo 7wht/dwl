@@ -213,7 +213,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_Return,      spawn,            {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_c,           spawn,            {.v = ss} },
 	{ MODKEY,                    XKB_KEY_y,           spawn,            {.v = lock} },
-	{ MODKEY|WLR_MODIFER_SHIFT,  XKB_KEY_y,           spawn,            {.v = sleep} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_y,           spawn,            {.v = sleep} },
 	{ MODKEY,                    XKB_KEY_s,           togglebar,        {0} },
 	{ MODKEY,                    XKB_KEY_a,           togglegaps,       {0} },
 	{ MODKEY,                    XKB_KEY_r,           togglesticky,     {0} },
