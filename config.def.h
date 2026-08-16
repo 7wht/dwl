@@ -218,13 +218,13 @@ static const char *browser_private[] = {
 static const char *pipewire_vol_inc[] = {
     "bash",
     "-c",
-    "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; dunstify -t 2000 -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed -E 's/Volume: 0\\.(.*)/\\1/') Volume:",
+    "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+; dunstify -t 2000 -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed -E 's/Volume: 0\\.(.*)/\\1/') Volume:",
     NULL
 };
 static const char *pipewire_vol_dec[] = {
     "bash",
     "-c",
-    "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; dunstify -t 2000 -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed -E 's/Volume: 0\\.(.*)/\\1/') Volume:",
+    "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-; dunstify -t 2000 -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed -E 's/Volume: 0\\.(.*)/\\1/') Volume:",
     NULL
 };
 
