@@ -35,6 +35,7 @@ static int log_level = WLR_ERROR;
 /* Autostart */
 static const char *const autostart[] = {
         "swaybg", "-i", "Pictures/Wallpapers/mountain2.png", NULL,
+        "dunst", NULL,
         NULL /* terminate */
 };
 
@@ -214,6 +215,18 @@ static const char *browser_private[] = {
     "--private-window",
     NULL
 };
+static const char *pipewire_vol_inc[] = {
+    "bash",
+    "-c",
+    "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; dunstify -t 2000 -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed -E 's/Volume: 0\\.(.*)/\\1/') Volume:",
+    NULL
+};
+static const char *pipewire_vol_dec[] = {
+    "bash",
+    "-c",
+    "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; dunstify -t 2000 -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed -E 's/Volume: 0\\.(.*)/\\1/') Volume:",
+    NULL
+};
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: 2 -> at, etc. */
@@ -221,6 +234,8 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_space,       spawn,            {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,      spawn,            {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_c,           spawn,            {.v = ss} },
+	{ MODKEY,                    XKB_KEY_z,           spawn,            {.v = pipewire_vol_dec} },
+	{ MODKEY,                    XKB_KEY_x,           spawn,            {.v = pipewire_vol_inc} },
 	{ MODKEY,                    XKB_KEY_b,           spawn,            {.v = browser} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_b,           spawn,            {.v = browser_private} },
 	{ MODKEY,                    XKB_KEY_y,           spawn,            {.v = lock} },
