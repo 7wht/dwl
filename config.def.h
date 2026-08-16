@@ -200,8 +200,9 @@ static const char *lock[] = {
     NULL
 };
 static const char *suspend[] = {
-    "systemctl",
-    "suspend",
+    "bash",
+    "-c",
+    "swaylock -Fi ~/Pictures/Wallpapers/mountain1.jpg & sleep 0.1; systemctl suspend",
     NULL
 };
 
