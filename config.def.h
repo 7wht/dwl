@@ -205,7 +205,15 @@ static const char *suspend[] = {
     "swaylock -Fi ~/Pictures/Wallpapers/mountain1.jpg & sleep 0.1; systemctl suspend",
     NULL
 };
-
+static const char *browser[] = {
+    "firefox",
+    NULL
+};
+static const char *browser_private[] = {
+    "firefox",
+    "--private-window",
+    NULL
+};
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: 2 -> at, etc. */
@@ -213,6 +221,8 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_space,       spawn,            {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,      spawn,            {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_c,           spawn,            {.v = ss} },
+	{ MODKEY,                    XKB_KEY_b,           spawn,            {.v = browser} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_b,           spawn,            {.v = browser_private} },
 	{ MODKEY,                    XKB_KEY_y,           spawn,            {.v = lock} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_y,           spawn,            {.v = suspend} },
 	{ MODKEY,                    XKB_KEY_s,           togglebar,        {0} },
