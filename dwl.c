@@ -1652,7 +1652,8 @@ dirtomon(enum wlr_direction dir)
 	return selmon;
 }
 
-void drawbar(Monitor *m)
+void
+drawbar(Monitor *m)
 {
 	int traywidth = 0;
 	int x, w, tw = 0;

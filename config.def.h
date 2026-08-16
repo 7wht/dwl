@@ -214,7 +214,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_f,           togglefloating,   {0} },
 	{ MODKEY,                    XKB_KEY_w,           togglefullscreen, {0} },
 	{ MODKEY,                    XKB_KEY_0,           view,             {.ui = ~0} },
-  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_b,           quit,             {0} },
+  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_m,           quit,             {0} },
 
 	TAGKEYS(          XKB_KEY_1, XKB_KEY_exclam,                        0),
 	TAGKEYS(          XKB_KEY_2, XKB_KEY_at,                            1),
