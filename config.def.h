@@ -187,11 +187,21 @@ static const char *dmenucmd[] = {
     "--scb", "#2A2F36", "--scf", "#D9DEE7",
     NULL
 };
-
 static const char *ss[] = {
     "bash",
     "-c",
     "grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +\%s).png",
+    NULL
+};
+static const char *lock[] = {
+    "swaylock",
+    "-Fi",
+    "~/Pictures/Wallpapers/mountain1.jpg",
+    NULL
+};
+static const char *sleep[] = {
+    "systemctl",
+    "suspend",
     NULL
 };
 
@@ -202,6 +212,8 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_space,       spawn,            {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,      spawn,            {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_c,           spawn,            {.v = ss} },
+	{ MODKEY,                    XKB_KEY_y,           spawn,            {.v = lock} },
+	{ MODKEY|WLR_MODIFER_SHIFT,  XKB_KEY_y,           spawn,            {.v = sleep} },
 	{ MODKEY,                    XKB_KEY_s,           togglebar,        {0} },
 	{ MODKEY,                    XKB_KEY_a,           togglegaps,       {0} },
 	{ MODKEY,                    XKB_KEY_r,           togglesticky,     {0} },
