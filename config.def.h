@@ -227,6 +227,12 @@ static const char *pipewire_vol_dec[] = {
     "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-; dunstify -t 2000 -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed -E 's/Volume: 0\\.(.*)/\\1/') Volume:",
     NULL
 };
+static const char *interface[] = {
+    "bash",
+    "-c",
+    "sel=$(nmcli c | grep \"$(paste -d '' <(nmcli c | tail -n +2 | awk '{if ($NF != \"--\") {print \"* \"} else {print \"\"}}') <(nmcli c | tail -n +2 | awk -F '  ' '{print $1}') | bemenu -i --fn \"JetBrainsMonoNL Nerd Font 20\" -p Interface: -l 10 --cw 1 --ch 30 --binding vim --vim-esc-exits -C --fixed-height -W 0.6 -c --single-instance --tb \"#202328\" --tf \"#FFFFFF\" --fb \"#2A2F36\" --ff \"#D9DEE7\" --cb \"#3DAEE9\" --cf \"#FFFFFF\" --nb \"#14161A\" --nf \"#D9DEE7\" --hb \"#3DAEE9\" --hf \"#14161A\" --fbb \"#2B333D\" --fbf \"#D9DEE7\" --sb \"#3DAEE9\" --sf \"#14161A\" --ab \"#1D1F22\" --af \"#D9DEE7\" --scb \"#2A2F36\" --scf \"#D9DEE7\" | sed -E 's/\\* (.*)/\\1/')\" | sed -E 's/.* (.*-.*-.*-.*-.*)/\\1/' | awk -F ' ' '{print $1}'); nmcli c $(nmcli c | grep $sel | awk '{if ($NF == \"--\") {printf \"%s\", \"u \"} else {printf \"%s\", \"d \"}}') $sel",
+    NULL
+};
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: 2 -> at, etc. */
@@ -234,6 +240,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_space,       spawn,            {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,      spawn,            {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_c,           spawn,            {.v = ss} },
+	{ MODKEY,                    XKB_KEY_i,           spawn,            {.v = interface} },
 	{ MODKEY,                    XKB_KEY_z,           spawn,            {.v = pipewire_vol_dec} },
 	{ MODKEY,                    XKB_KEY_x,           spawn,            {.v = pipewire_vol_inc} },
 	{ MODKEY,                    XKB_KEY_b,           spawn,            {.v = browser} },
