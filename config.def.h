@@ -239,7 +239,7 @@ static const char *interface[] = {
 static const char *wallpaper[] = {
     "bash",
     "-c",
-    "wall=\"$(ls ~/Pictures/Wallpapers/ | bemenu -i --fn 'JetBrainsMonoNL Nerd Font 20' -p action: -l 10 --cw 1 --ch 30 --binding vim --vim-esc-exits -C --fixed-height -W 0.6 -c --single-instance --tb '#202328' --tf '#FFFFFF' --fb '#2A2F36' --ff '#D9DEE7' --cb '#3DAEE9' --cf '#FFFFFF' --nb '#14161A' --nf '#D9DEE7' --hb '#3DAEE9' --hf '#14161A' --fbb '#2B333D' --fbf '#D9DEE7' --sb '#3DAEE9' --sf '#14161A' --ab '#1D1F22' --af '#D9DEE7' --scb '#2A2F36' --scf '#D9DEE7')\" || exit 0; pkill swaybg; swaybg -i \"/home/$USER/Pictures/Wallpapers/$wall\"",
+    "wall=\"$(ls ~/Pictures/Wallpapers/ | bemenu -i --fn 'JetBrainsMonoNL Nerd Font 20' -p Wallpaper: -l 10 --cw 1 --ch 30 --binding vim --vim-esc-exits -C --fixed-height -W 0.6 -c --single-instance --tb '#202328' --tf '#FFFFFF' --fb '#2A2F36' --ff '#D9DEE7' --cb '#3DAEE9' --cf '#FFFFFF' --nb '#14161A' --nf '#D9DEE7' --hb '#3DAEE9' --hf '#14161A' --fbb '#2B333D' --fbf '#D9DEE7' --sb '#3DAEE9' --sf '#14161A' --ab '#1D1F22' --af '#D9DEE7' --scb '#2A2F36' --scf '#D9DEE7')\" || exit 0; pkill swaybg; swaybg -i \"/home/$USER/Pictures/Wallpapers/$wall\"",
     NULL
 };
 
