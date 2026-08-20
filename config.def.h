@@ -44,6 +44,7 @@ static const char *const autostart[] = {
 static const Rule rules[] = {
 	/* app_id             title       tags mask     isfloating   isterm   noswallow   monitor */
 	{ "kitty",            NULL,       0,            0,           1,       0,          -1 },
+	{ "foot",             NULL,       0,            0,           1,       0,          -1 },
 	{ "Gimp_EXAMPLE",     NULL,       0,            1,           0,       0,          -1 }, /* Start on currently visible tags floating, not tiled */
 	{ "firefox_EXAMPLE",  NULL,       1 << 8,       0,           0,       0,          -1 }, /* Start on ONLY tag "9" */
     /* default/example rule: can be changed but cannot be eliminated; at least one rule must exist */
@@ -138,7 +139,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[] = { "kitty", NULL };
+static const char *termcmd[] = { "foot", NULL };
 static const char *menucmd[] = {
     "bemenu-run",
     "-i",
@@ -194,7 +195,7 @@ static const char *dmenucmd[] = {
 static const char *ss[] = {
     "bash",
     "-c",
-    "grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +\%s).png",
+    "grim -c -t jpeg -q 100 -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +\%s).jpg",
     NULL
 };
 static const char *lock[] = {
@@ -210,11 +211,11 @@ static const char *suspend[] = {
     NULL
 };
 static const char *browser[] = {
-    "firefox",
+    "librewolf",
     NULL
 };
 static const char *browser_private[] = {
-    "firefox",
+    "librewolf",
     "--private-window",
     NULL
 };
@@ -242,17 +243,38 @@ static const char *wallpaper[] = {
     "wall=\"$(ls ~/Pictures/Wallpapers/ | bemenu -i --fn 'JetBrainsMonoNL Nerd Font 20' -p Wallpaper: -l 10 --cw 1 --ch 30 --binding vim --vim-esc-exits -C --fixed-height -W 0.6 -c --single-instance --tb '#202328' --tf '#FFFFFF' --fb '#2A2F36' --ff '#D9DEE7' --cb '#3DAEE9' --cf '#FFFFFF' --nb '#14161A' --nf '#D9DEE7' --hb '#3DAEE9' --hf '#14161A' --fbb '#2B333D' --fbf '#D9DEE7' --sb '#3DAEE9' --sf '#14161A' --ab '#1D1F22' --af '#D9DEE7' --scb '#2A2F36' --scf '#D9DEE7')\" || exit 0; pkill swaybg; swaybg -i \"/home/$USER/Pictures/Wallpapers/$wall\"",
     NULL
 };
+static const char *color_picker[] = {
+    "bash",
+    "-c",
+    "hyprpicker | wl-copy",
+    NULL
+};
+static const char *brightness_inc[] = {
+    "bash",
+    "-c",
+    "brightnessctl s 1%+; dunstify -t 2000 -h int:value:$(brightnessctl | grep % | sed -E 's/.*\\((.*)%\\)/\\1/') Brightness:",
+    NULL
+};
+static const char *brightness_dec[] = {
+    "bash",
+    "-c",
+    "brightnessctl s 1%-; dunstify -t 2000 -h int:value:$(brightnessctl | grep % | sed -E 's/.*\\((.*)%\\)/\\1/') Brightness:",
+    NULL
+};
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: 2 -> at, etc. */
 	/* modifier                  key                  function          argument */
 	{ MODKEY,                    XKB_KEY_space,       spawn,            {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,      spawn,            {.v = termcmd} },
-	{ MODKEY,                    XKB_KEY_c,           spawn,            {.v = ss} },
+	{ MODKEY,                    XKB_KEY_r,           spawn,            {.v = ss} },
 	{ MODKEY,                    XKB_KEY_i,           spawn,            {.v = interface} },
 	{ MODKEY,                    XKB_KEY_o,           spawn,            {.v = wallpaper} },
+	{ MODKEY,                    XKB_KEY_c,           spawn,            {.v = color_picker} },
+  { MODKEY,                    XKB_KEY_x,           spawn,            {.v = pipewire_vol_inc} },
 	{ MODKEY,                    XKB_KEY_z,           spawn,            {.v = pipewire_vol_dec} },
-	{ MODKEY,                    XKB_KEY_x,           spawn,            {.v = pipewire_vol_inc} },
+  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_x,           spawn,            {.v = brightness_inc} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_z,           spawn,            {.v = brightness_dec} },
 	{ MODKEY,                    XKB_KEY_b,           spawn,            {.v = browser} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_b,           spawn,            {.v = browser_private} },
 	{ MODKEY,                    XKB_KEY_y,           spawn,            {.v = lock} },
