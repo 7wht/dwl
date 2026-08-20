@@ -246,7 +246,7 @@ static const char *wallpaper[] = {
 static const char *color_picker[] = {
     "bash",
     "-c",
-    "hyprpicker | wl-copy",
+    "hyprpicker | head -c 7 | wl-copy",
     NULL
 };
 static const char *brightness_inc[] = {
